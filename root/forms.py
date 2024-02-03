@@ -1,14 +1,8 @@
 from django import forms
-from .models import Contact
+from .models import Todo
 
 
-class ContactForm(forms.ModelForm):
+class TodoForm(forms.ModelForm):
     class Meta:
-        model = Contact
-        fields = ['first_name', 'last_name', 'email']
-
-        widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-        }
+        model = Todo
+        fields = ['title', 'content', 'due_date']

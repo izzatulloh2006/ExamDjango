@@ -1,10 +1,12 @@
-from django.contrib.auth import views as auth_views
 from django.urls import path
-from . import views
-from .views import HomePageView
+from .views import todo_list, todo_create, todo_search_title, todo_filter_due, HomePageViews
+
 
 urlpatterns = [
-    path('', HomePageView.as_view(), name='home'),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
-    path('register/', views.register, name='register'),
+    path('',HomePageViews.as_view(), name='home'),
+    path('todo/', todo_list, name='todo_list'),
+    path('todo/create/', todo_create, name='todo_create'),
+    path('todo/search/', todo_search_title, name='todo_search_title'),
+    path('todo/filter/', todo_filter_due, name='todo_filter_due_date'),
+
 ]
