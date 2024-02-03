@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<body>
+    <div class="container mt-5">
+        <h2>Contact List</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact.first_name }}</td>
+                    <td>{{ contact.last_name }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>
+                        <a href="{% url 'update_contact' contact.id %}" class="btn btn-warning">Update</a>
+                        <form method="post" action="{% url 'delete_contact' contact.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+
+
+
+{#  <h1>Update Contact</h1>#}
+{#  <form method="post">#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    <button type="submit">Update</button>#}
+{#  </form>#}
+{% endblock %}
+
+
+
